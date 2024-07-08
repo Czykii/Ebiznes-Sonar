@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	const des = "Lorem ipsum"
 	e := echo.New()
 	e.Use(middleware.CORS())
 	e.GET("/", func(context echo.Context) error {
@@ -19,11 +20,11 @@ func main() {
 	DB := database.Connect()
 
 	productData := []models.Product{
-		{Name: "Produkt 1", Description: "Lorem ipsum", Price: 350.99},
-		{Name: "Produkt 2", Description: "Lorem ipsum", Price: 55.99},
-		{Name: "Produkt 3", Description: "Lorem ipsum", Price: 1250.0},
+		{Name: "Produkt 1", Description: des, Price: 350.99},
+		{Name: "Produkt 2", Description: des, Price: 55.99},
+		{Name: "Produkt 3", Description: des, Price: 1250.0},
 	}
-	
+
 	err := database.GetData(DB, productData)
 	if err != nil {
 		panic(err)
